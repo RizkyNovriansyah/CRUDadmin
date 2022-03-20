@@ -1,64 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# CRUD ADMIN
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+CRUD ADMIN
 
-## About Laravel
+## Create Project
+ > composer create-project --prefer-dist laravel/laravel:^7.0 logistiktni
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation
+ > composer install 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+ > cp .env.example .env
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+ > php artisan key:generate
 
-## Learning Laravel
+ > php artisan serve
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Common Command
+ > php artisan make:model Profile --migration
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+ > php artisan migrate:fresh
 
-## Laravel Sponsors
+ > php artisan migrate:fresh --seed
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+ > php artisan make:seeder DictionarySeeder
 
-### Premium Partners
+# Adding Auth
+ > composer require laravel/ui:^2.4
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+ > php artisan ui vue --auth
 
-## Contributing
+# Adding Token Auth 
+ > composer require laravel/sanctum
+ 
+ > php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+ > php artisan migrate
 
-## Code of Conduct
+# Adding MasterPass
+ > composer require imanghafoori/laravel-masterpass
+ 
+ > php artisan vendor:publish --tag=master_password
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+ tambah di .env
+ > MASTER_PASSWORD=passwordsakti
 
-## Security Vulnerabilities
+# Framework UI
+ > https://demo.getstisla.com/
+ 
+ > https://www.w3schools.com/icons/fontawesome5_intro.asp
+ 
+# Deployment to Hosting
+ > https://www.domainesia.com/panduan/cara-upload-file-laravel-di-hosting/
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Mysql Command
 
-## License
+# # Create DB
+ > mysql -u root1 -p
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+ > CREATE DATABASE kapal_laut;
+
+## Dumping File MYSQL
+ > mysqldump -u root1 -p pilold > dbexport.sql
+
+# Rest API Token Tutorial
+ > https://jurnalmms.web.id/laravel/membuat-authentikasi-api-dengan-laravel-passport/
+
+ > https://jurnalmms.web.id/laravel/membuat-rest-api-dengan-laravel-7/#Melindungi_REST_API_dengan_Authentikasi
+ 
+ > https://laravel.com/docs/7.x/passport#introduction 
+
+ > https://laravel.com/docs/7.x/sanctum#how-it-works
