@@ -8,7 +8,7 @@ use App\Models\Customer;
 use GuzzleHttp\Middleware;
 use Yajra\Datatables\Datatables;
 use App\Http\Controllers\CustomerController;
-use App\Models\item;
+use App\Models\Item;
 use App\Http\Controllers\ItemController;
 
 /*
@@ -61,13 +61,13 @@ Route::resource('/cust', CustomerController::class);
 // });
 
 Route::get('/itemku', function () {
-    return Datatables::of(item::query())
+    return Datatables::of(Item::query())
     ->addColumn('total','total')
     ->addColumn('action','actionitem')
     ->make(true);
 })->name('itemku');
 
 Route::get('/item', [ItemController::class, 'index']);
-Route::post('/item', [ItemController::class, 'store']);
+Route::post('/item_store', [ItemController::class, 'store']);
 Route::post('/item', [ItemController::class, 'update']);
-Route::post('/item', [ItemController::class, 'destroy']);
+// Route::post('/item/', [ItemController::class, 'destroy']);
