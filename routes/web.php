@@ -63,7 +63,7 @@ Route::resource('/cust', CustomerController::class);
 Route::get('/itemku', function () {
     return Datatables::of(Item::query())
     ->addColumn('total','total')
-    ->addColumn('action','actionitem')
+    ->addColumn('action','Actionitem')
     ->make(true);
 })->name('itemku');
 
