@@ -11,21 +11,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Table Customer </title>
+    <title> Table Item </title>
 </head>
 
 <body>
  <div class="container-fluid col-md-9 ms-sm-auto col-lg-10 px-md-4">
  <div class="row d-flex col-12 justify-content-center">
     <div class="table-responsive" >
-        <table id="Table" class=" table table-stripped " class="text-center" style="width:100%">
+        <table id="Tableitem" class=" table table-stripped " class="text-center" style="width:100%">
             <thead>
                 <tr>
                     <th> No </th>
                     <th> ID </th>
-                    <th> Code </th>
-                    <th> Nama Customer </th>
-                    <th> City </th>
+                    <th> Item </th>
+                    <th> Quantity </th>
+                    <th> Price </th>
+                    <th> Total </th>
                     <th> Action </th>
                 </tr>
             </thead>
@@ -35,9 +36,10 @@
                 <tr>
                     <th> No </th>
                     <th> ID </th>
-                    <th> Code </th>
-                    <th> Nama Customer </th>
-                    <th> City </th>
+                    <th> Item </th>
+                    <th> Quantity </th>
+                    <th> Price </th>
+                    <th> Total </th>
                     <th> Action </th>
                 </tr>
             </tfoot>
@@ -56,30 +58,26 @@
     <script>
        $(document).ready(function() {
            
-        $('#Table').DataTable({
+        $('#Tableitem').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('data') !!}',
+        ajax: '{!! route('itemku') !!}',
         columns: [
             {
-                "data": "id",
+                "itemku": "id",
                     render: function (data, type, row, meta) {
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
             },
             { data: 'id', name: 'id' },
-            { data: 'code', name: 'code' },
-            { data: 'customer', name: 'customer' },
-            { data: 'city', name: 'city' },
+            { data: 'item', name: 'item' },
+            { data: 'qty', name: 'qty' },
+            { data: 'price', name: 'price' },
+            { data: 'total', name: 'total' },
             { data: 'action', name: 'action' },
         ]
     });
-        });
-        $(".get_data_json").on('click', function(event){
-        console.log($(this).data("id"))
-        });
-        
-        
+        } ); 
     </script>
 
 </body>

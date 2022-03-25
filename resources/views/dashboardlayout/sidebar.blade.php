@@ -16,6 +16,12 @@
                             Customer
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('/itemku/index') ? 'active' : '' }}" href="/item">
+                            <span data-feather="database"></span>
+                            Itemku
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

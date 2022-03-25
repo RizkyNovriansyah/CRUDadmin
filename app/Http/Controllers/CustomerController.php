@@ -6,6 +6,8 @@ use App\Models\Customer;
 use Customers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Exception;
+use Yajra\DataTables\Contracts\DataTable;
 
 class CustomerController extends Controller
 {
@@ -16,6 +18,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        if(request()->ajax()) {
+            return datatables()->of(Customer::select('*'))
+            ->addColumn('action', 'action')
+            ->make(true);
+        }
         return view('/dash');
     }
 
@@ -77,7 +84,13 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        // try {
+        //     $user = Customer::where('id',$id)->first();
+        //      return $user->toJson();
+        //     } catch (Exception $e) {
+        //         return response()
+        //                ->json(['msg' => 'Tidak Ditemukan', 'error' => $e->getMessage()]);
+        //    }
     }
 
     /**
@@ -102,11 +115,19 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $regcus = $request->validate([
-            'code' => 'required',
-            'date' => 'required',
+            'code'     => 'required',
+            'date'     => 'required',
             'customer' => 'required',
-            'city'=>'required',
+            'city'     => 'required',
         ]);
+         //get data by ID
+         $regcus = Customer::where('id', $id)->update([
+            'code'               => $request->code,
+            'date'               => $request->date,
+            'customer'           => $request->customer,         
+            'city'               => $request->city,     
+             ] );
+             return redirect('/custom')->with('success','Data Delete Success');
 
         
 
@@ -118,11 +139,14 @@ class CustomerController extends Controller
      * @param  \app\models\Customer $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     
     {  
-        dd($customer);
+        // dd($customer);
     //    $customer->delete();
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
         return redirect('/custom')->with('success','Data Delete Success');
     }
+ 
 }

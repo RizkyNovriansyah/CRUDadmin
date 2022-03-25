@@ -8,6 +8,8 @@ use App\Models\Customer;
 use GuzzleHttp\Middleware;
 use Yajra\Datatables\Datatables;
 use App\Http\Controllers\CustomerController;
+use App\Models\item;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +54,20 @@ Route::get('/custdel', function () {
 Route::get('/mdlcustom', function () {
     return view('customer.modal');
 });
-Route::resource('/cust', CustomerController::class)->parameters(['cust' => 'Customer:id']);
+Route::resource('/cust', CustomerController::class);
+
+// Route::get('/item', function () {
+//     return view('itemku.index');
+// });
+
+Route::get('/itemku', function () {
+    return Datatables::of(item::query())
+    ->addColumn('total','total')
+    ->addColumn('action','actionitem')
+    ->make(true);
+})->name('itemku');
+
+Route::get('/item', [ItemController::class, 'index']);
+Route::post('/item', [ItemController::class, 'store']);
+Route::post('/item', [ItemController::class, 'update']);
+Route::post('/item', [ItemController::class, 'destroy']);

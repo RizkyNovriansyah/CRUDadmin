@@ -3,6 +3,7 @@
 CRUD ADMIN
 
 ## Create Project
+ >  /usr/local/bin/composer install
  > composer create-project --prefer-dist laravel/laravel:^7.0 logistiktni
 
 ## Installation
