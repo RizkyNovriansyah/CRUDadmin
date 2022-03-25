@@ -122,17 +122,24 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="/js/dashboard.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
     
     {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
     
     <script type="text/javascript">
-        $("#jumlah, #harga").keyup(function() {
-            var harga  = $("#harga").val();
-            var jumlah = $("#jumlah").val();
 
+        function update_value(id) {
+            var harga  = $("#harga"+id).val();
+            var jumlah = $("#jumlah"+id).val();
             var total = parseInt(harga) * parseInt(jumlah);
-            $("#total").val(total);
-        });
+            $("#total"+id).val(total);
+        }
+
 </script>
 
 </body>

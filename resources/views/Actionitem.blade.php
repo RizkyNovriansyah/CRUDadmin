@@ -17,18 +17,18 @@
                     </div>
                     <div class="mb-3">
                         <label class="col-form-label">Quantity</label>
-                        <input type="text" id="jumlah" name="qty" class="form-control" value="{{$model->qty}}" 
+                        <input type="text" id="jumlah{{$model->id}}" name="qty" onkeyup="update_value('{{$model->id}}')" class="form-control" value="{{$model->qty}}" 
                         required placeholder="Entry Date Quantity">
                     </div>
                     <div class="mb-3">
                         <label class="col-form-label">Price</label>
-                        <input type="text" id="harga" name="price" class="form-control" value="{{$model->price}}" 
+                        <input type="text" id="harga{{$model->id}}" name="price" onkeyup="update_value('{{$model->id}}')" class="form-control" value="{{$model->price}}" 
                             required
                             placeholder="Entry Your Item Price">
                     </div>
                     <div class="mb-3">
                         <label class="col-form-label">Total</label>
-                        <input type="text" id="total" name="total" class="form-control" value="{{$model->price * $model->qty}}"
+                        <input type="text" id="total{{$model->id}}" name="total" class="form-control" value="{{$model->price * $model->qty}}"
                             required
                             placeholder="Entry Your Item Price">
                     </div>
